@@ -1,7 +1,47 @@
 $(function() {
 
-	// Coding Activity: Creating an Image Gallery with Lightbox
+	// The Focus & Blur Events
 	
+
+
+	// Handling KeyDown & KeyUp Events
+	// keypress() - EVIl
+	// $("html").keydown(function(event) {
+	// 	console.log(event.which);
+	// });
+
+ //    var ARROW_RIGHT = 39;
+	// $("html").keydown(function(event) {
+	// 	if(event.which === ARROW_RIGHT) {
+ //            $(".blue-box").stop().animate({
+ //                 marginLeft: "+=20px"
+ //            }, 50)
+	// 	}
+	// 	console.log(event.which);
+	// });
+
+
+	// Coding Activity: Creating an Image Gallery with Lightbox
+	// var galleryItems = $(".gallery").find("img");
+	// galleryItems.css("width", "33%").css("opacity", "0.7");
+
+	// galleryItems.mouseenter(function() {
+ //        $(this).stop().fadeTo(500, 1);
+	// });
+
+	// galleryItems.mouseleave(function() {
+ //        $(this).stop().fadeTo(500, 0.7);
+	// });
+
+	// galleryItems.click(function() {
+	// 	var source = $(this).attr("src");
+	// 	var image = $("<img>").attr("src", source).css("width", "100%");
+	// 	$(".lightbox").empty().append(image).stop().fadeIn(2000);
+	// })
+
+	// $(".lightbox").click(function() {
+	// 	$(this).stop().fadeOut(2000);
+	// })
 
 	// Passing Additional Data to Events
 	// $("#btn-click").click({
