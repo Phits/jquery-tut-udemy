@@ -1,16 +1,135 @@
 $(function() {
 
+	// Coding Activity: Creating an Image Gallery with Lightbox
+	
+
+	// Passing Additional Data to Events
+	// $("#btn-click").click({
+	// 	user: "John",
+	// 	domain: "Fit.com"
+	// }, function(event) {
+ //         greetUser(event.data);
+	// });
+
+ //    function greetUser(userdata) {
+ //        username = userdata.user || "Anonymous";
+ //        domain = userdata.domain || "example.com";
+
+ //        alert("Welcome back " + username + "!" + " from " + domain);
+ //    };
+
+	// Delegated Events
+ //    $("#content").on("click", "p", function() {
+	// 	$(this).slideUp();
+	// });
+	// $("#content").append("<p>This is a dynamically added paragraph.</p>");
+
+	// $("body").on("mouseenter", "li", function() {
+	// 	$(this).css("color", "green");
+	// });
+
+	// $("p").click(function() {
+	// 	$(this).slideUp();
+	// });
+	// $("#content").append("<p>This is a dynamically added paragraph.</p>");
+
+	// Modularizing Event Handlers (No More Inline Functi..
+	// function logEvent() {
+ //       console.log("Mouse was click or key was pressed.");
+	// }
+
+ //    $("html").on("click keydown", logEvent);
+
+ //    function switchToNextImage() {
+ //    	i = (i + 1) % images.length;
+ //    	$(this).fadeOut(function() {
+ //    		$(this).attr("src", images[i]).fadeIn()
+ //    	});
+ //    }
+
+ //    var images = [
+ //         "images/laptop-mobile_small.jpg",
+ //         "images/laptop-on-table_small.jpg",
+ //         "images/people-office-group-team_small.jpg"
+ //    ];
+ //    var i = 0;
+ //    var galleryImage = $(".gallery").find("img");
+ //    galleryImage.on("click", switchToNextImage);
+
+	// Adding the Same Handler for Multiple Events
+	// .on("click", function() {...});
+    // $("html").on("click keydown", function() {
+    // 	console.log("Mouse was click or key was pressed.");
+    // })
+
+    // $(".gallery img").on("click", function() {
+    // 	$(this).attr( "src", "images/laptop-on-table_small.jpg" );
+    // })
+
+    // var images = [
+    //      "images/laptop-mobile_small.jpg",
+    //      "images/laptop-on-table_small.jpg",
+    //      "images/people-office-group-team_small.jpg"
+    // ];
+
+    // var i = 0;
+    // $(".gallery").find("img").on("click", function() {
+    // 	i = (i + 1) % images.length;
+    // 	$(this).fadeOut(function() {
+    // 		$(this).attr("src", images[i]).fadeIn()
+    // 	});
+    // })
+
+	// Adding MouseEnter & MouseLeave Handlers
+	// var blueBox = $(".blue-box");
+
+	// $(blueBox).mouseenter(function(){
+ //        $(this).stop().fadeTo(500, 0.7)
+	// });
+
+	// $(blueBox).mouseleave(function(){
+ //        $(this).stop().fadeTo(500, 1.0);
+	// });
+
+	// hover(handlerIn, handlerOut)
+	// blueBox.hover(function() {
+	// 	$(this).stop().fadeTo(500, 0.7)
+	// }, function() {
+	// 	$(this).stop().fadeTo(500, 1.0);
+	// });
+
+	// Adding Hover Handlers
+	// :hover 
+	// $("#btn-hover").hover(function(){
+ //        alert("Hover");
+	// });
+
+	// $(".green-box").hover(function(){
+ //        $(this).text("I was hovered.");
+	// });
+
+	// Adding Click Handlers
+	// $("#btn-click").click(function(event) {
+	// 	console.log(event);
+	// 	alert("Button was clicked.");
+	// });
+
+	// $(".red-box").click(function() {
+	// 	$(this).fadeTo(500, 0.5)
+	// });
+	// $(".red-box").click();
+
 	// Retieving and Changing the Content of an Element
 	//  text(), html()
-	var firstPar = $("p:first");
-	console.log( firstPar.text() );
-	console.log( firstPar.html() );
-	console.log( $("p").html() );
+	// var firstPar = $("p:first");
+	// console.log( firstPar.text() );
+	// console.log( firstPar.html() );
+	// console.log( $("p").html() );
 
 	// firstPar.text("<strong>Hello</strong> World");
 	// firstPar.html("<strong>Hello</strong> World");
 
-    firstPar.html( firstPar.html() + " This was just appended." );
+    // firstPar.html( firstPar.html() + " This was just appended." );
 
 	// Changing Data of 
 	// var gallery = $(".gallery")
