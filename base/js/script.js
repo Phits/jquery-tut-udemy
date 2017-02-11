@@ -1,16 +1,35 @@
 $(function() {
 
+	// Fast Feedback Form
+	var form = $("#form");
+    enableFastFeedback(form);
+
+
+	// For Validation on Submit
+     // $("#form").submit(function() {
+     //    var name = $('#name').val();
+     //    var password = $('#password').val();
+     //    var message = $('#message').val();
+     //    var checked = $('#checkbox').is(":checked");
+
+     //    validateNameField(name, event);
+     //    validatePassword(password, event);
+     //    validateMessage(message, event);
+     //    validateChecked(checked, event)
+
+     // });
+
 	// Handling the Submit Event
-	$("#form").submit(function(event) {
-	   console.log("yeah");
-       var textarea = $("#message");
-       if (textarea.val().trim() == "") {
-       	   console.log("box-shadow");
-           textarea.css("box-shadow", "0 0 4px #811");
-           event.preventDefault();
-       } else {
-       };
-	});
+	// $("#form").submit(function(event) {
+	//    console.log("yeah");
+ //       var textarea = $("#message");
+ //       if (textarea.val().trim() == "") {
+ //       	   console.log("box-shadow");
+ //           textarea.css("box-shadow", "0 0 4px #811");
+ //           event.preventDefault();
+ //       } else {
+ //       };
+	// });
 
 	// Using the Change Event
 	// $("#checkbox").change(function() {
@@ -449,3 +468,117 @@ $(function() {
 		// });
 
 });
+
+
+// Form Functions
+function validateNameField(name, event) {
+    if(!isValidName(name)) {
+        $("#name-feedback").text("Please at least two haracters.");
+        event.preventDefault();
+    } else {
+    	$("#name-feedback").text("");
+    }
+} 
+
+function isValidName(name) {
+    return name.length >= 2;
+}
+
+function validatePassword(password, event) {
+    if(!isValidPassword(password)) {
+        $("#password-feedback").text("Please at least six characters and contain a number.");
+        event.preventDefault();
+    } else {
+    	$("#password-feedback").text("");
+    }
+} 
+
+function isValidPassword(password) {
+    return password.length >= 6 && /.*[0-9].*/.test(password);
+}
+
+function validateMessage(message, event) {
+    if(!isValidMessage(message)) {
+        $("#message-feedback").text("Please at least ten characters.");
+        event.preventDefault();
+    } else {
+    	$("#message-feedback").text("");
+    }
+} 
+
+function isValidMessage(message) {
+    return message.length >= 10;
+}
+
+function validateChecked(checked, event) {
+    if(!isValidChecked(checked)) {
+        $("#checkbox-feedback").text("Please check box.");
+        event.preventDefault();
+    } else {
+    	$("#checkbox-feedback").text("");
+    }
+} 
+
+function isValidChecked(checked) {
+    return checked
+}
+
+// Fast Form Functions
+function enableFastFeedback(formElement) {
+    var nameInput = formElement.find("#name");
+    var passwordInput = formElement.find("#password");
+    var messageInput = formElement.find("#message");
+    var checkInput = formElement.find("#checkbox");
+
+    nameInput.blur(function(event) {
+        var name = $(this).val();
+        validateNameField(name, event);
+
+        if (!isValidName(name)) {
+            $(this).css({"box-shadow": "0 0 4px #811", "border": "1px solid #600"
+            });
+        } else {
+        	$(this).css({"box-shadow": "0 0 8px #181", "border": "1px solid #060"
+            });
+        }
+    });
+
+    passwordInput.blur(function(event) {
+        var password = $(this).val();
+        validatePassword(password, event);
+
+        if (!isValidPassword(password)) {
+            $(this).css({"box-shadow": "0 0 4px #811", "border": "1px solid #600"
+            });
+        } else {
+        	$(this).css({"box-shadow": "0 0 8px #181", "border": "1px solid #060"
+            });
+        }
+    });
+
+    messageInput.blur(function(event) {
+        var message = $(this).val();
+        validateMessage(message, event);
+
+        if (!isValidMessage(message)) {
+            $(this).css({"box-shadow": "0 0 4px #811", "border": "1px solid #600"
+            });
+        } else {
+        	$(this).css({"box-shadow": "0 0 8px #181", "border": "1px solid #060"
+            });
+        }
+    });
+
+    checkInput.change(function(event) {
+        var isChecked = $(this).is(":checked");
+        validateChecked(isChecked, event);
+
+        if (!isValidChecked(isChecked)) {
+            $(this).css({"box-shadow": "0 0 4px #811", "border": "1px solid #600"
+            });
+        } else {
+        	$(this).css({"box-shadow": "0 0 8px #181", "border": "1px solid #060"
+            });
+        }
+    });
+}
