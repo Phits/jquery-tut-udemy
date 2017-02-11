@@ -1,8 +1,78 @@
 $(function() {
 
+	// Improving the Pokedex
+    // Retrieving Pokemon Data from The PokeAPI (or Star Wars)
+    var pokeapiURL = "http://pokeapi.co/api/v2/generation/1/";
+    var pokeapByName = "http://pokeapi.co/api/v2/pokemon/";
+
+    $.getJSON(pokeapiURL).done(function(data) {
+        console.log(data);
+        $.each(data.pokemon_species, function(index, pokemon) {
+             var name = pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1);
+             var link = $("<a>").attr("id", pokemon.name).attr("href", "#").append($("<strong>").text(name));
+             var par = $("<p>").html("Pokemon species no. " + (index+1) + " is ").append(link);
+
+             link.click(function(event) {
+               $.getJSON(pokeapByName + pokemon.name).done(function(details) {
+                   console.log(details);
+                   var pokemonDiv = $("#pokemon-details");
+                   pokemonDiv.empty();
+                   pokemonDiv.append("<h2>" + name + "</h2>");
+                   pokemonDiv.append("<img src='" + details.sprites.front_default + "'>");
+                   pokemonDiv.append("<img src='" + details.sprites.back_default + "'>");
+                   pokemonDiv.append("<img src='" + details.sprites.front_shiny + "'>");
+                   pokemonDiv.append("<img src='" + details.sprites.back_shiny + "'>");
+               });
+               event.preventDefault();
+             })
+
+             par.appendTo("#pokemon")
+        });
+    }).fail(function() {
+    	console.log("Request to PokeAPI failed.");
+    }).always(function() {
+    	console.log("Pokemon is awesome.")
+    });
+
+	// Retrieving Flickr Images Through the Flickr API (+Understanding JSON)
+	// JSON, $.getJSON()
+	// var flickerApiUrl = "https://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?";
+
+ //    $.getJSON(flickerApiUrl, {
+ //    	 tags: "sun, beach",
+ //    	 tagmode: "any",
+ //    	 format: "json"
+ //    }).done(function(data) {
+ //        console.log(data);
+ //        $.each(data.items, function(index, item){
+ //        	console.log(item);
+ //        	$("<img>").attr("src", item.media.m).appendTo("#flicker");
+
+ //        	if(index == 3) {
+ //                return false;
+ //        	}
+ //        });
+ //    }).fail(function() {
+ //    	alert("Ajax call failed");
+ //    });
+
+	// Ajax
+	// $.get(), $.post(), $ajax(), $.getJSON
+
+	// Fetching a Server File with JQuery
+	// $.load()
+	$("#code").load("js/script.js");
+
+    $("#code").load("js/script.js", function(response, status) {
+    	if (status == "error") {
+            alert("Could not find file.");
+    	}
+    	// console.log(response);
+    });
+
 	// Fast Feedback Form
-	var form = $("#form");
-    enableFastFeedback(form);
+	// var form = $("#form");
+ //    enableFastFeedback(form);
 
 
 	// For Validation on Submit
